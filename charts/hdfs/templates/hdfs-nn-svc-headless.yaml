@@ -13,9 +13,7 @@ spec:
     port: {{ .Values.nameNode.port }}
     protocol: TCP
   - name: webhdfs
-    port: 50070
-  clusterIP: None
-  publishNotReadyAddresses: true
+    port: 9870
   selector:
     app.kubernetes.io/name: {{ include "hdfs.name" . }}
     app.kubernetes.io/component: namenode

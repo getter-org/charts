@@ -8,9 +8,12 @@ metadata:
     app.kubernetes.io/component: httpfs
     {{- include "hdfs.labels" . | nindent 4 }}
 spec:
+  type: NodePort
   ports:
   - name: httpfs
     port: {{ .Values.httpfs.port }}
+    targetPort: {{ .Values.httpfs.port }}
+    nodePort: 32468
     protocol: TCP
   selector:
     app.kubernetes.io/name: {{ include "hdfs.name" . }}

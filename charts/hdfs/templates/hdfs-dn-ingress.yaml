@@ -17,6 +17,7 @@ metadata:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec: 
+  ingressClassName: public
   rules:
   {{- range .Values.ingress.dataNode.hosts }}
     - host: {{ . }}
@@ -25,6 +26,6 @@ spec:
           - path: {{ $ingressPath }}
             backend:
               serviceName: {{ $fullname }}-datanode
-              servicePort: 50075
+              servicePort: 9864
   {{- end }}
 {{- end }}
